@@ -41,3 +41,4 @@ It is possible and common for there to be multiple possible un-romanizations of 
 - Most, but not all, of the "extended Katakana" on [the Wikipedia chart](https://en.wikipedia.org/wiki/Hepburn_romanization#For_extended_katakana) are supported in the romanizer
 - This library makes heavy use of its own collection, `com.stackoverflow.ManyMap`, a many-to-many map class supporting forward and reverse lookup.  It's very useful, feel free to use it in your own stuff.
 - This library depends on Google Guava.
+- Long お sounds are romanized and romanized how they're spelled, with an う.  So, "がっこう" would be romanized as "gakkou"
