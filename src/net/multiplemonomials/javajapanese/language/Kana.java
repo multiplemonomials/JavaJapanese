@@ -1,4 +1,4 @@
-package net.multiplemonomials.densetsu.language;
+package net.multiplemonomials.javajapanese.language;
 
 import com.stackoverflow.ManyMap;
 

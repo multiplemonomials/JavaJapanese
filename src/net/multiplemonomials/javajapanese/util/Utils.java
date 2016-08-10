@@ -1,4 +1,4 @@
-package net.multiplemonomials.densetsu.util;
+package net.multiplemonomials.javajapanese.util;
 
 /**
  * Created by Jamie on 3/6/2016.

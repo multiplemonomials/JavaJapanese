@@ -2,12 +2,12 @@ package com.stackoverflow;
 
 
 
-import com.google.common.collect.HashMultimap;
-
 import java.util.Set;
 
+import com.google.common.collect.HashMultimap;
+
 /**
- * Many-to-many map supporting reverse lockup
+ * Many-to-many map supporting reverse lookup
  * 
  * Modified from http://stackoverflow.com/questions/20390923/do-we-have-a-multibimap
  * @param <Key>

@@ -1,4 +1,4 @@
-package net.multiplemonomials.densetsu.language;
+package net.multiplemonomials.javajapanese.language;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,9 +6,10 @@ import java.util.Set;
 
 import com.stackoverflow.ManyMap;
 
-import net.multiplemonomials.densetsu.util.Log;
-import net.multiplemonomials.densetsu.util.Pair;
-import net.multiplemonomials.densetsu.util.Utils;
+import net.multiplemonomials.javajapanese.util.Log;
+import net.multiplemonomials.javajapanese.util.Pair;
+import net.multiplemonomials.javajapanese.util.Utils;
+
 
 /**
  * Created by Jamie on 3/6/2016.

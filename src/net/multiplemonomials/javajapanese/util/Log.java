@@ -1,4 +1,4 @@
-package net.multiplemonomials.densetsu.util;
+package net.multiplemonomials.javajapanese.util;
 
 /**
  * Basic logging wrapper class for JavaJapanese

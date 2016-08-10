@@ -1,4 +1,4 @@
-package net.multiplemonomials.densetsu.util;
+package net.multiplemonomials.javajapanese.util;
 
 /**
  * This class is useful when one wants to return two values from one function. 
