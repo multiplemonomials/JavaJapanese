@@ -458,6 +458,11 @@ public class Romanizer
 		}
 	}
 
+	/**
+	 * Get all possible Japanese spellings of the given romaji.  It is possible for there to be more than one.
+	 * @param romaji
+	 * @return
+	 */
 	public Set<String> unromanize(String romaji)
 	{
 		HashSet<Branch> branches = new HashSet<Branch>();
