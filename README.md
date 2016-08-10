@@ -33,6 +33,7 @@ Returns a `Set<String>` containing all possible hiragana spellings of a romaji w
 It is possible and common for there to be multiple possible un-romanizations of a word.  For example, for "nani", valid unromanizations are "なに" and "なんい".  One of those might be more likely, but both are possible, and this function doesn't have or provide any information about which is correct.  In many cases, romanization is a loss of information.  Because of this, I'd recommend using this for searching, not for displaying text to the user.
 
 ## Download
+[Source and binary jar](https://dl.dropboxusercontent.com/u/27566023/Software%20Host/JavaJapanese-0.1.jar)
 
 ## Notes
 
