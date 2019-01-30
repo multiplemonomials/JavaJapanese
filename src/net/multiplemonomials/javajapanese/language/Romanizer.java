@@ -10,7 +10,6 @@ import net.multiplemonomials.javajapanese.util.Log;
 import net.multiplemonomials.javajapanese.util.Pair;
 import net.multiplemonomials.javajapanese.util.Utils;
 
-
 /**
  * Created by Jamie on 3/6/2016.
  */
@@ -22,6 +21,8 @@ public class Romanizer
 		KUNREISHIKI;
 
 		ManyMap<Character, String> hira2Romaji;
+		
+		//only the set of extended kana sounds which use small y characters
 		ManyMap<Character, String> yoonFirstChar;
 		ManyMap<Character, String> yoonSecondChar;
 
@@ -63,7 +64,7 @@ public class Romanizer
 			HEPBURN.hira2Romaji.put('せ', "se");
 			HEPBURN.hira2Romaji.put('そ', "so");
 			HEPBURN.hira2Romaji.put('ざ', "za");
-			HEPBURN.hira2Romaji.put('じ', "zi");
+			HEPBURN.hira2Romaji.put('じ', "ji");
 			HEPBURN.hira2Romaji.put('ず', "zu");
 			HEPBURN.hira2Romaji.put('ぜ', "ze");
 			HEPBURN.hira2Romaji.put('ぞ', "zo");
@@ -110,28 +111,27 @@ public class Romanizer
 			HEPBURN.hira2Romaji.put('る', "ru");
 			HEPBURN.hira2Romaji.put('れ', "re");
 			HEPBURN.hira2Romaji.put('ろ', "ro");
-
+			HEPBURN.hira2Romaji.put('わ', "wa");
 			HEPBURN.hira2Romaji.put('を', "o");
 			HEPBURN.hira2Romaji.put('ん', "n");
 
-			HEPBURN.yoonFirstChar.put('き', "k");
-			HEPBURN.yoonFirstChar.put('し', "s");
+			HEPBURN.yoonFirstChar.put('き', "ky");
+			HEPBURN.yoonFirstChar.put('し', "sh");
 			HEPBURN.yoonFirstChar.put('ち', "ch");
-			HEPBURN.yoonFirstChar.put('に', "n");
-			HEPBURN.yoonFirstChar.put('ひ', "h");
-			HEPBURN.yoonFirstChar.put('み', "m");
-			HEPBURN.yoonFirstChar.put('り', "r");
-			HEPBURN.yoonFirstChar.put('ぎ', "g");
+			HEPBURN.yoonFirstChar.put('に', "ny");
+			HEPBURN.yoonFirstChar.put('ひ', "hy");
+			HEPBURN.yoonFirstChar.put('み', "my");
+			HEPBURN.yoonFirstChar.put('り', "ry");
+			HEPBURN.yoonFirstChar.put('ぎ', "gy");
 			HEPBURN.yoonFirstChar.put('じ', "j");
 			HEPBURN.yoonFirstChar.put('ぢ', "j");
-			HEPBURN.yoonFirstChar.put('び', "b");
-			HEPBURN.yoonFirstChar.put('ぴ', "p");
+			HEPBURN.yoonFirstChar.put('び', "by");
+			HEPBURN.yoonFirstChar.put('ぴ', "py");
+			HEPBURN.yoonFirstChar.put('ふ', "f");
 
 			//extended katakana sounds (used to represent foreign words, don't hava hiragana equivalents)
 			//some yoon first chars make different sounds when used with extended katakana second chars
 			//however, some of them will still get erroneously converted to hiragana
-
-			HEPBURN.yoonFirstChar.put('ふ', "f"); //only set of extended kana sounds which use small y characters
 
 			HEPBURN.exYoonFirstChar.put('う', "w");
 			HEPBURN.exYoonFirstChar.put('ヴ', "v");
@@ -144,11 +144,12 @@ public class Romanizer
 			HEPBURN.exYoonFirstChar.put('で', "d");
 			HEPBURN.exYoonFirstChar.put('ど', "d");
 			HEPBURN.exYoonFirstChar.put('ふ', "f");
-
+			HEPBURN.exYoonFirstChar.put('り', "r");
+			
 			//regular kana
-			HEPBURN.yoonSecondChar.put('ゃ', "ya");
-			HEPBURN.yoonSecondChar.put('ゅ', "yu");
-			HEPBURN.yoonSecondChar.put('ょ', "yo");
+			HEPBURN.yoonSecondChar.put('ゃ', "a");
+			HEPBURN.yoonSecondChar.put('ゅ', "u");
+			HEPBURN.yoonSecondChar.put('ょ', "o");
 
 			//extended katakana
 			HEPBURN.exYoonSecondChar.put('ぁ', "a");
@@ -187,6 +188,7 @@ public class Romanizer
 
 			KUNREISHIKI.hira2Romaji.removeAllValues('し');
 			KUNREISHIKI.hira2Romaji.put('し', "si");
+			KUNREISHIKI.hira2Romaji.put('じ', "ji");
 
 			KUNREISHIKI.hira2Romaji.removeAllValues('ち');
 			KUNREISHIKI.hira2Romaji.put('ち', "ti");
@@ -328,16 +330,15 @@ public class Romanizer
 			}
 			else if(currentChar == littleTsu)
 			{
-				if(index < kana.length() - 1)
-				{
+				//if(index >= kana.length() - 1)
+				//{
 					//append the first letter of the consonant sound of the nexc character
 					output.insert(0, getConsonantPart(kana.charAt(index + 1)).charAt(0));
-
-				}
-				else
-				{
-					throw new IllegalArgumentException("Invalid hiragana!  There's a っ at the end!");
-				}
+				//}
+				//else
+				//{
+				//	throw new IllegalArgumentException("Invalid hiragana! The word ends with a っ!");
+				//}
 			}
 			else if(currentChar == vowelRepeatDash)
 			{
@@ -345,11 +346,10 @@ public class Romanizer
 				{
 					//append the first letter of the consonant sound of the previous character
 					output.insert(0, getVowelPart(kana.charAt(index - 1)));
-
 				}
 				else
 				{
-					throw new IllegalArgumentException("Invalid hiragana!  There's a ー at the start!");
+					throw new IllegalArgumentException("Invalid hiragana! The word starts with a ー!");
 				}
 			}
 			else
@@ -436,6 +436,9 @@ public class Romanizer
 
 		boolean done = false;
 
+		// true if no steps could be found for the remaining characters in this
+		boolean failed = false;
+
 		public Branch()
 		{
 			text = new StringBuilder();
@@ -459,7 +462,7 @@ public class Romanizer
 	}
 
 	/**
-	 * Get all possible Japanese spellings of the given romaji.  It is possible for there to be more than one.
+	 * Turns romaji back into kana.
 	 * @param romaji
 	 * @return
 	 */
@@ -487,6 +490,7 @@ public class Romanizer
 					if(nextSteps.isEmpty())
 					{
 						branch.done = true;
+						branch.failed = true;
 					}
 					else
 					{
@@ -533,16 +537,6 @@ public class Romanizer
 
 			//now that we're done iterating, add the new branches
 			branches.addAll(branchesToAdd);
-
-
-			//check for branches which still need processing
-//			for(Branch branch : branches)
-//			{
-//				if(!branch.done)
-//				{
-//					moreWorkToDo = true;
-//				}
-//			}
 		}
 		while(moreWorkToDo);
 
@@ -551,7 +545,7 @@ public class Romanizer
 		for(Branch branch : branches)
 		{
 			//if the only branch is the initial one and it is empty, we want to return an empty set, so filter out empty branches.
-			if(!branch.text.toString().isEmpty())
+			if(!branch.failed && !branch.text.toString().isEmpty())
 			{
 				possibleKana.add(branch.text.toString());
 			}

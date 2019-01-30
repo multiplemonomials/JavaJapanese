@@ -20,7 +20,7 @@ public class Kana
 
 		static
 		{
-			//katakana characters hand-copied from the ordering in JED's kana table
+			//hiragana characters hand-copied from the ordering in JED's kana table
 			seion = ManyMap.fromArray(new Character[]{'あ', 'い', 'う', 'え', 'お', 'か', 'き', 'く', 'け', 'こ', 'さ', 'し', 'す', 'せ', 'そ', 'た', 'ち', 'つ', 'て', 'と',
 					'な', 'に', 'ぬ', 'ね', 'の', 'は', 'ひ', 'ふ', 'へ', 'ほ', 'ま', 'み', 'む', 'め', 'も', 'や', 'ゆ', 'よ', 'ら', 'り', 'る', 'れ', 'ろ', 'わ', 'ん', 'を'});
 
@@ -29,7 +29,7 @@ public class Kana
 
 			handakuon=ManyMap.fromArray(new Character[]{'ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ'});
 
-			smallcharacters =ManyMap.fromArray(new Character[]{'ゃ', 'ゅ', 'ょ', 'っ'});
+			smallcharacters =ManyMap.fromArray(new Character[]{'ゃ', 'ゅ', 'ょ', 'っ', 'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ'});
 
 		}
 
@@ -54,9 +54,9 @@ public class Kana
 			dakuon = ManyMap.fromArray(new Character[]{'ガ', 'ギ', 'グ', 'ゲ', 'ゴ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ', 'タ', 'ヂ', 'ヅ', 'デ', 'ド',
 					'バ', 'ビ', 'ブ', 'ベ', 'ボ'});
 
-			handakuon=ManyMap.fromArray(new Character[]{'バ', 'ビ', 'ブ', 'ベ', 'ボ'});
+			handakuon=ManyMap.fromArray(new Character[]{'パ', 'ピ', 'プ', 'ペ', 'ポ'});
 
-			smallcharacters =ManyMap.fromArray(new Character[]{'ャ', 'ュ', 'ョ', 'ッ'});
+			smallcharacters =ManyMap.fromArray(new Character[]{'ャ', 'ュ', 'ョ', 'ッ', 'ァ', 'ィ', 'ゥ', 'ェ', 'ォ'});
 
 		}
 
